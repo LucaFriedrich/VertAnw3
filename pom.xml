@@ -78,6 +78,7 @@
         </dependency>
     </dependencies>
     <build>
+        <finalName>verteilte-anwendung</finalName>
         <plugins>
             <plugin>
                 <groupId>io.quarkus.platform</groupId>
