@@ -5,7 +5,7 @@ package de.berlin.htw.boundary.dto;
  */
 public class Basket extends Order {
 
-    private Float remainingBalance;
+	private Float remainingBalance;
 
 	public Float getRemainingBalance() {
 		return remainingBalance;

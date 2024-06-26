@@ -15,14 +15,14 @@ public class UserRepository {
 
     @PersistenceContext
     EntityManager entityManager;
-    
+
     public UserEntity findUserById(final Integer id) {
         return entityManager.find(UserEntity.class, id);
     }
-    
+
     @Transactional
     public void persistUser(final UserEntity user) {
         entityManager.persist(user);
     }
-    
+
 }

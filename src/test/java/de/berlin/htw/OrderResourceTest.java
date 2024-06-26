@@ -11,22 +11,22 @@ class OrderResourceTest {
     @Test
     void testUnauthorized() {
         given()
-            .log().all()
-            .when().get("/orders")
-            .then()
-            .log().all()
-            .statusCode(401);
+                .log().all()
+                .when().get("/orders")
+                .then()
+                .log().all()
+                .statusCode(401);
     }
 
     @Test
     void testAuthorization() {
         given()
-        	.log().all()
-        	.when().header("X-User-Id", "1")
-        	.get("/orders")
-        	.then()
-        	.log().all()
-        	.statusCode(415);
+                .log().all()
+                .when().header("X-User-Id", "1")
+                .get("/orders")
+                .then()
+                .log().all()
+                .statusCode(415);
     }
 
 }

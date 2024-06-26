@@ -50,8 +50,8 @@ public abstract class AbstractEntity {
 
     private Date cloneDate(final Date date) {
         return (Date) Optional.ofNullable(date)
-            .map(Date::clone)
-            .orElse(null);
+                .map(Date::clone)
+                .orElse(null);
     }
 
     @Override

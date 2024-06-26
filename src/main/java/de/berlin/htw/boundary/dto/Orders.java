@@ -8,7 +8,7 @@ import java.util.List;
 public class Orders {
 
     private List<Order> orders;
-    
+
     private Float balance;
 
     public List<Order> getOrders() {
@@ -19,12 +19,12 @@ public class Orders {
         this.orders = orders;
     }
 
-	public Float getBalance() {
-		return balance;
-	}
+    public Float getBalance() {
+        return balance;
+    }
 
-	public void setBalance(Float balance) {
-		this.balance = balance;
-	}
+    public void setBalance(Float balance) {
+        this.balance = balance;
+    }
 
 }

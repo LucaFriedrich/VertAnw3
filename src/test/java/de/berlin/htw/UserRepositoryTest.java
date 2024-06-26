@@ -23,20 +23,20 @@ public class UserRepositoryTest {
 
     @PersistenceContext
     EntityManager entityManager;
-    
+
     @Inject
     UserTransaction userTransaction;
-    
+
     @Inject
     UserRepository repository;
-    
+
     @Test
     void testAddUser() throws NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
         UserEntity user = new UserEntity();
         user.setName("TestUser");
         user.setBalance(10f);
         repository.persistUser(user);
-        
+
         userTransaction.begin();
         int deltedUser = entityManager
                 .createQuery("DELETE FROM UserEntity u WHERE u.name = :userName")

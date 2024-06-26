@@ -26,21 +26,21 @@ public class PrincipalRequestFilter implements ContainerRequestFilter {
     @Inject
     Logger logger;
 
-	@Inject
-	UserRepository repository;
-	
+    @Inject
+    UserRepository repository;
+
     @Override
     public void filter(ContainerRequestContext requestContext)
-        throws IOException {
+            throws IOException {
         final String userId = requestContext.getHeaderString("X-User-Id");
         if (userId == null) {
-        	logger.error("X-User-Id header was not provided");
-        	throw new NotAuthorizedException("X-User-Id");
+            logger.error("X-User-Id header was not provided");
+            throw new NotAuthorizedException("X-User-Id");
         }
         final Principal principal = repository.findUserById(Integer.valueOf(userId));
         if (principal == null) {
-        	logger.error("Principal not found in database");
-        	throw new NotAuthorizedException("X-User-Id");
+            logger.error("Principal not found in database");
+            throw new NotAuthorizedException("X-User-Id");
         } else {
             SecurityContext securityContext = requestContext.getSecurityContext();
             securityContext = extendSecurityContext(securityContext, principal);
@@ -49,7 +49,7 @@ public class PrincipalRequestFilter implements ContainerRequestFilter {
     }
 
     private SecurityContext extendSecurityContext(final SecurityContext securityContext,
-        final Principal principal) {
+                                                  final Principal principal) {
         return new SecurityContext() {
             @Override
             public Principal getUserPrincipal() {

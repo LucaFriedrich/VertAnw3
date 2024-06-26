@@ -20,10 +20,10 @@ public class UserEntity extends AbstractEntity implements Principal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Integer id;
-    
+
     @Column(name = "NAME")
     private String name;
-    
+
     @Column(name = "BALANCE")
     private Float balance;
 
@@ -51,7 +51,7 @@ public class UserEntity extends AbstractEntity implements Principal {
     public void setBalance(Float balance) {
         this.balance = balance;
     }
-    
+
     @Override
     public int hashCode() {
         return id;
@@ -59,7 +59,7 @@ public class UserEntity extends AbstractEntity implements Principal {
 
     @Override
     public boolean equals(Object other) {
-    	if (this == other) {
+        if (this == other) {
             return true;
         }
         if (other == null) {
@@ -76,7 +76,7 @@ public class UserEntity extends AbstractEntity implements Principal {
 
     @Override
     public String toString() {
-    	return getId() + ":" + getName();
+        return getId() + ":" + getName();
     }
 
 }

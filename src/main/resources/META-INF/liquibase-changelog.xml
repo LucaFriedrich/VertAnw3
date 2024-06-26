@@ -5,8 +5,8 @@
 #
  -->
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="verteilte-anwendungen-0.0.1" author="alexander.stanik@htw-berlin.de">
         <createTable tableName="USER">
@@ -30,30 +30,67 @@
 
     <changeSet id="verteilte-anwendungen-0.0.2" author="alexander.stanik@htw-berlin.de">
         <insert tableName="USER">
-            <column name="ID">1</column>    
-            <column name="NAME">Maximilian</column>    
-            <column name="BALANCE">120.30</column>    
+            <column name="ID">1</column>
+            <column name="NAME">Maximilian</column>
+            <column name="BALANCE">120.30</column>
         </insert>
         <insert tableName="USER">
-            <column name="ID">2</column>    
-            <column name="NAME">Mohamed</column>    
-            <column name="BALANCE">70.87</column>    
+            <column name="ID">2</column>
+            <column name="NAME">Mohamed</column>
+            <column name="BALANCE">70.87</column>
         </insert>
         <insert tableName="USER">
-            <column name="ID">3</column>    
-            <column name="NAME">Marcin</column>    
-            <column name="BALANCE">8920.06</column>    
+            <column name="ID">3</column>
+            <column name="NAME">Marcin</column>
+            <column name="BALANCE">8920.06</column>
         </insert>
         <insert tableName="USER">
-            <column name="ID">4</column>    
-            <column name="NAME">Mian</column>    
-            <column name="BALANCE">3150.00</column>    
+            <column name="ID">4</column>
+            <column name="NAME">Mian</column>
+            <column name="BALANCE">3150.00</column>
         </insert>
         <insert tableName="USER">
-            <column name="ID">5</column>    
-            <column name="NAME">Mandy</column>    
-            <column name="BALANCE">0.11</column>    
+            <column name="ID">5</column>
+            <column name="NAME">Mandy</column>
+            <column name="BALANCE">0.11</column>
         </insert>
     </changeSet>
 
+    <changeSet id="verteilte-anwendungen-0.0.3" author="klaudia.puchaczewski@Student.htw-berlin.de">
+        <createTable tableName="ORDERS">
+            <column name="ID" type="INT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="USER_ID" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column name="TOTAL" type="DECIMAL(10, 2)">
+                <constraints nullable="false" />
+            </column>
+            <column name="ORDER_DATE" type="timestamp" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <createTable tableName="ORDER_ITEMS">
+            <column name="ORDER_ID" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column name="PRODUCT_NAME" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="PRODUCT_ID" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="COUNT" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column name="PRICE" type="DECIMAL(10, 2)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint constraintName="fk_orders_user" baseTableName="ORDERS" baseColumnNames="USER_ID" referencedTableName="USER" referencedColumnNames="ID" />
+        <addForeignKeyConstraint constraintName="fk_order_items_order" baseTableName="ORDER_ITEMS" baseColumnNames="ORDER_ID" referencedTableName="ORDERS" referencedColumnNames="ID" />
+    </changeSet>
 </databaseChangeLog>

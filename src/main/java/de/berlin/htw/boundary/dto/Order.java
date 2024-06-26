@@ -8,9 +8,9 @@ import java.util.List;
 public class Order {
 
     private List<Item> items;
-    
+
     private Float total;
-    
+
     public List<Item> getItems() {
         return items;
     }

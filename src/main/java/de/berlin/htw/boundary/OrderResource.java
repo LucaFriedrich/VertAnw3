@@ -24,10 +24,10 @@ public class OrderResource {
 
     @Context
     UriInfo uri;
-    
+
     @Context
     SecurityContext context;
-    
+
     @Inject
     OrderController order;
 
@@ -40,8 +40,8 @@ public class OrderResource {
     @APIResponse(responseCode = "200", description = "Retieve all completed orders successfully")
     @APIResponse(responseCode = "401", description = "No or wrong User Id provided as header")
     public Orders getCompletedOrders() {
-    	logger.info(context.getUserPrincipal().getName() 
-    			+ " is calling " + uri.getAbsolutePath());
+        logger.info(context.getUserPrincipal().getName()
+                + " is calling " + uri.getAbsolutePath());
 
         return order.todo();
     }

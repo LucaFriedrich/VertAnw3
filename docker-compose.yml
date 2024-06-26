@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: geheim
+      MYSQL_DATABASE: VA_APP
+    ports:
+      - "3312:3306"
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
